@@ -1,0 +1,40 @@
+save path : ./save/2024-06-26/cifar10_vgg8_bn_bin_160_SGD_binarized
+{'data_path': '/home/dataset/cifar10', 'dataset': 'cifar10', 'arch': 'vgg8_bn_bin', 'epochs': 160, 'optimizer': 'SGD', 'test_batch_size': 128, 'learning_rate': 0.1, 'momentum': 0.9, 'decay': 0.0003, 'schedule': [80, 120], 'gammas': [0.1, 0.1], 'print_freq': 100, 'save_path': './save/2024-06-26/cifar10_vgg8_bn_bin_160_SGD_binarized', 'resume': '', 'start_epoch': 0, 'evaluate': False, 'fine_tune': False, 'model_only': False, 'ngpu': 1, 'gpu_id': 0, 'workers': 4, 'manualSeed': 589, 'quan_bitwidth': None, 'reset_weight': False, 'enable_bfa': False, 'attack_sample_size': 128, 'n_iter': 20, 'k_top': None, 'random_bfa': False, 'clustering': False, 'lambda_coeff': 0.001, 'use_cuda': True}
+Random Seed: 589
+python version : 3.10.14 | packaged by conda-forge | (main, Mar 20 2024, 12:45:18) [GCC 12.3.0]
+torch  version : 2.3.0
+cudnn  version : 8700
+=> creating model 'vgg8_bn_bin'
+=> network :
+ VGG(
+  (features): Sequential(
+    (0): quan_Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (4): quan_Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (6): ReLU(inplace=True)
+    (7): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (8): quan_Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (9): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): ReLU(inplace=True)
+    (11): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (12): quan_Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (13): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (14): ReLU(inplace=True)
+    (15): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (classifier): Sequential(
+    (0): Dropout(p=0.5, inplace=False)
+    (1): quan_Linear(in_features=512, out_features=512, bias=True)
+    (2): ReLU(inplace=True)
+    (3): Dropout(p=0.5, inplace=False)
+    (4): quan_Linear(in_features=512, out_features=512, bias=True)
+    (5): ReLU(inplace=True)
+    (6): quan_Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+=> do not use any checkpoint for vgg8_bn_bin model
+
+==>>[2024-06-26 21:21:07] [Epoch=000/160] [Need: 00:00:00] [LR=0.1000][M=0.90] [Best : Accuracy=0.00, Error=100.00]
